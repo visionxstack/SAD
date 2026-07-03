@@ -90,16 +90,27 @@ struct Node{
 
 ## 14. Create 10->20->30->NULL
 ```cpp
-Node *first=new Node();
-Node *second=new Node();
-Node *third=new Node();
+struct Node
+{
+int data;
+Node *next;
+};
 
-first->data=10;
-first->next=second;
-second->data=20;
-second->next=third;
-third->data=30;
-third->next=NULL;
+int main(){
+    Node *first=new Node();
+    Node *second=new Node();
+    Node *third=new Node();
+
+    first->data=10;
+    first->next=second;
+
+    second->data=20;
+    second->next=third;
+
+    third->data=30;
+    third->next=NULL;
+
+}
 ```
 
 ## 15. What is Stack?
