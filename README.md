@@ -52,12 +52,27 @@ A structure is a user-defined data type that stores different types of data unde
 
 ## 11. Student Structure
 ```cpp
-struct Student
-{
-    int rollNo;
-    string name;
-    float marks;
+#include<iostream>
+using namespace std;
+
+struct Student{
+    string Name;
+    int RollNo;
+    float Marks;
 };
+int main(){
+  Student s;
+
+  cin>>s.Name;
+  cin>>s.RollNo;
+  cin>>s.Marks;
+
+  cout<<s.Name<<endl;
+  cout<<s.RollNo<<endl;
+  cout<<s.Marks<<endl;
+
+  return 0;
+}
 ```
 
 ## 12. What is a Linked List?
