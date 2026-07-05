@@ -1,150 +1,283 @@
-# Systems Analysis and Design — Practice Exam Questions & Model Answers
+# OS Theory — Easy Q&A Guide (No Numericals)
 
-**Note:** These are practice questions I've written based on your syllabus, styled to match the "scenario-based application" format described (30 marks, 6 questions). They are **not the actual exam questions** — your real paper may differ — but the *pattern, style, and reasoning approach* are exactly what you should expect. Study how each answer is structured, not just the content.
-
----
-
-## Question 1 — Systems Analysis & Information Systems (5 marks)
-
-**Scenario:**
-*GreenLeaf Grocers is a mid-sized supermarket chain. Currently, cashiers record sales on paper receipts, and at the end of each day, a staff member manually adds up the totals and writes them into a ledger. The owner wants to start making informed decisions about which products to reorder based on sales trends, but currently has no way to see this data quickly.*
-
-**(a)** Identify TWO benefits GreenLeaf Grocers would gain from adopting Systems Analysis and Design to improve their sales recording process. (2 marks)
-**(b)** Recommend a suitable type of Information System for GreenLeaf Grocers' daily sales recording, and a separate type for helping the owner make reorder decisions. Justify your choices. (3 marks)
-
-### Model Answer
-
-**(a) Benefits:**
-1. **Improved accuracy** – Replacing manual addition with a computerized system eliminates human calculation errors in daily totals.
-2. **Better decision-making** – Digitized, organized sales data allows the owner to quickly identify trends instead of relying on handwritten ledgers.
-*(Other acceptable answers: cost reduction, faster processing, easier data retrieval.)*
-
-**(b) Recommended systems:**
-- For **daily sales recording**, GreenLeaf should implement a **Transaction Processing System (TPS)** — e.g., a Point of Sale (POS) system — because TPS is designed to record routine, day-to-day transactions accurately and instantly at the point of sale, replacing the paper-receipt process.
-- For **reorder decision-making**, the owner needs a **Management Information System (MIS)**, which would summarize the TPS's raw sales data into reports (e.g., weekly best-sellers, low-stock items). This directly solves the stated problem — the owner "has no way to see this data quickly" — because an MIS turns transactional data into digestible reports for decision-making.
-
-*(Why not a DSS? A DSS is for more complex "what-if" modelling; at this stage GreenLeaf just needs summarized reporting, so MIS is the better fit unless the scenario specifically described complex forecasting needs.)*
+Simple, exam-ready answers for all your topics. Each answer is short, in plain language, with an example where it helps.
 
 ---
 
-## Question 2 — System Design and Testing (5 marks)
+### 1. What is an Operating System (OS)?
 
-**Scenario:**
-*A university is launching a new online course registration system. During a pilot run, several students reported that clicking "Submit" sometimes registered them for the wrong course, and a few students were able to register for courses that were already full.*
+An OS is software that sits between **you (the user)** and the **computer hardware**.
 
-**(a)** Identify the likely design flaw(s) causing these problems. (2 marks)
-**(b)** Recommend which type(s) of testing should have been carried out before launch to catch these issues, and explain why each is relevant. (3 marks)
+It manages the CPU, memory, files, and devices so you don't have to deal with the hardware directly.
 
-### Model Answer
-
-**(a) Likely design flaws:**
-- Poor **input design/validation** — the form may not correctly bind the student's selection to the correct course ID before submission, causing wrong registrations.
-- Missing **business rule enforcement** in the process design — the system isn't checking course capacity in real time before confirming a registration, allowing over-enrollment in full courses.
-
-**(b) Recommended testing:**
-- **Unit Testing** should have been performed on the registration module in isolation to confirm that selecting a course correctly maps to that course's ID — this would likely have caught the "wrong course" bug early, before integration.
-- **System Testing** should have verified the complete registration workflow, including the capacity-check business rule, to confirm full courses correctly reject new registrations.
-- **User Acceptance Testing (UAT)** with real students (as was attempted in the pilot) is valuable, but should happen *after* unit and system testing catch these more basic errors — relying on UAT alone to catch fundamental logic errors is inefficient and risks a poor first impression for users.
-
-**Why testing matters here:** Skipping thorough testing led to real students being registered incorrectly, which could cause administrative errors, unfair access to popular courses, and reputational damage to the university's new system.
+**Example:** Windows, Linux, Android.
 
 ---
 
-## Question 3 — Feasibility Study (5 marks)
+### 2. Functions of OS
 
-**Scenario:**
-*A small medical clinic wants to replace its paper-based patient record system with a digital Electronic Health Record (EHR) system. The clinic has 4 staff members, none of whom have strong IT skills. The estimated cost is $15,000, and the clinic expects to save on filing staff time and reduce record-retrieval delays. The clinic needs the system running within 2 months, before a new government health data regulation takes effect.*
-
-**Conduct a feasibility study for this scenario by evaluating Technical, Economic, Operational, and Schedule feasibility.** (5 marks — approx. 1.25 marks per category, with an overall conclusion)
-
-### Model Answer
-
-- **Technical Feasibility:** The clinic's staff currently lack strong IT skills, which poses a risk. However, most modern EHR systems are designed with user-friendly interfaces and vendors typically provide training and support. Feasible, *provided* staff training and technical support are budgeted in.
-
-- **Economic Feasibility:** The $15,000 cost must be weighed against long-term savings in filing staff time and faster patient record retrieval (reduced administrative overhead, potentially improved patient satisfaction and throughput). If these savings recur monthly/yearly, the system likely pays for itself within a reasonable period — appears economically feasible, though a formal cost-benefit analysis with real numbers would strengthen this conclusion.
-
-- **Operational Feasibility:** Moving from paper to digital records is a significant change for staff unfamiliar with IT; there is a risk of resistance or slow adoption. This risk can be mitigated with proper training and a phased rollout, but should not be ignored.
-
-- **Schedule Feasibility:** The 2-month deadline (driven by the new regulation) is tight, especially given staff's limited technical background. This is the highest-risk area — the clinic should prioritize a proven, ready-made EHR solution rather than custom-building one, to realistically meet the deadline.
-
-**Conclusion:** The project is feasible overall, but Schedule and Operational feasibility carry the most risk. The clinic should choose a pre-built, easy-to-use EHR product with vendor-provided training to meet both the regulatory deadline and staff skill limitations.
+1. **Process Management** – starts, runs, and stops programs.
+2. **Memory Management** – decides which program gets how much memory.
+3. **File Management** – lets you create, save, and delete files.
+4. **Device Management** – controls hardware like printer, mouse, keyboard.
+5. **Security** – blocks unauthorized access.
 
 ---
 
-## Question 4 — System Development Methodologies (5 marks)
+### 3. Objectives of OS
 
-**Scenario:**
-*A fintech startup wants to build a mobile banking app. The founders admit that they are not yet fully sure what features customers will want most, and they wish to release a basic working version quickly, gather user feedback, and keep improving it every few weeks.*
-
-**Recommend a suitable system development methodology for this startup. Justify your answer with reference to flexibility, risk handling, and development speed.** (5 marks)
-
-### Model Answer
-
-**Recommendation:** An **Agile (iterative) methodology** is most suitable for this startup, rather than a traditional Waterfall approach.
-
-**Justification:**
-- **Flexibility:** The founders explicitly state they are "not yet fully sure what features customers will want." Agile is built for exactly this situation — requirements can evolve between sprints based on real user feedback, whereas Waterfall requires requirements to be fully defined upfront, which would be risky given their uncertainty.
-- **Risk Handling:** Agile's iterative sprints allow the startup to identify problems (technical or market-fit issues) early and often, in small increments, rather than discovering major issues only after a long, complete build — which is a common risk with Waterfall.
-- **Development Speed:** The founders want to "release a basic working version quickly" — Agile delivers working software in short cycles (e.g., every 2–4 weeks), matching this need directly, whereas Waterfall would only deliver a finished product at the very end of a long single development phase.
-
-**Conclusion:** Given the startup's uncertain requirements and desire for fast, iterative releases with continuous feedback, Agile is clearly the better fit than a traditional methodology.
+1. **Convenience** – make the computer easy to use.
+2. **Efficiency** – use hardware resources well, don't waste them.
+3. **Ability to Evolve** – allow new features to be added easily later.
 
 ---
 
-## Question 5 — Process Modelling and Data Modelling (5 marks)
+### 4. Operating System Structure
 
-**Scenario:**
-*A logistics company processes customer delivery requests through three departments: Sales (takes the order), Warehouse (prepares the package), and Dispatch (arranges delivery). Each department currently keeps its own separate spreadsheet, and staff have noticed that customer address details are sometimes entered differently in each spreadsheet, causing delivery delays. Management also suspects the order sometimes sits for a long time between Sales and Warehouse without anyone noticing.*
-
-**(a)** Recommend a process modelling technique to address the delay between Sales and Warehouse, and explain how it would help. (2 marks)
-**(b)** Recommend a data modelling approach to address the address-detail inconsistency, and explain how it would help. (3 marks)
-
-### Model Answer
-
-**(a) Process Modelling:**
-A **Data Flow Diagram (DFD)** should be created to map the current flow of an order from Sales through Warehouse to Dispatch. This would visually expose exactly where the process stalls — for instance, if there is no automatic notification from Sales to Warehouse when a new order arrives, the DFD would reveal this manual handoff gap as the **bottleneck**. Once identified, the company can redesign the process (e.g., automatic system alerts) to remove the delay.
-
-**(b) Data Modelling:**
-An **Entity-Relationship Diagram (ERD)** should be used to design a single, shared database structure — with one central "Customer" entity holding address details, linked to "Order," "Warehouse Task," and "Dispatch" entities — rather than three separate department spreadsheets. This ensures address data is entered and stored **once**, and referenced (not re-typed) by each department, eliminating the inconsistency and reducing delivery delays caused by mismatched address data.
+| Structure | Simple Meaning |
+|---|---|
+| **Monolithic** | Whole OS is one big program. Fast, but hard to fix/update. |
+| **Layered** | OS is built in layers, each layer only talks to the layer below it. Easier to debug. |
+| **Microkernel** | Only the most essential stuff stays in the kernel; everything else runs outside it. More secure. |
+| **Modular** | Core kernel + extra features added as separate modules (like plugins). Used in Linux/macOS. |
 
 ---
 
-## Question 6 — Requirements Analysis (5 marks)
+### 5. System Call
 
-**Scenario:**
-*An online bookstore wants a new e-commerce website. During discussions, the client says: "Customers should be able to search for books by title or author, add books to a cart, and checkout using a credit card. Since we sell internationally, the site absolutely must load fast even in countries with slow internet, and customer payment information must be fully protected."*
+A **system call** is how a program asks the OS to do something for it — like open a file or create a new process.
 
-**(a)** Identify THREE functional requirements from this scenario. (1.5 marks)
-**(b)** Identify TWO non-functional requirements from this scenario. (1.5 marks)
-**(c)** Explain why properly documenting these requirements matters for this project. (2 marks)
+**Why needed?** Programs aren't allowed to touch hardware directly (for safety). So they "call" the OS, and the OS does the risky part safely.
 
-### Model Answer
-
-**(a) Functional Requirements:**
-1. The system shall allow customers to search for books by title or author.
-2. The system shall allow customers to add books to a shopping cart.
-3. The system shall allow customers to check out using credit card payment.
-
-**(b) Non-Functional Requirements:**
-1. **Performance** – The system must load quickly/efficiently even under slow internet connections.
-2. **Security** – Customer payment information must be protected (e.g., through encryption).
-
-**(c) Importance of documenting requirements:**
-Clearly documenting these requirements ensures the development team builds exactly what the client needs — for example, without explicitly recording the performance requirement, developers might build a feature-rich but heavy website that fails international customers with slow connections. Documentation also provides a clear benchmark for testing (e.g., "does the site load within X seconds?" and "is payment data encrypted?"), and serves as a reference point to prevent scope disputes between the bookstore and the development team later in the project.
+**Example:** `open()`, `read()`, `write()`.
 
 ---
 
-## The Pattern to Notice
+### 6. Process
 
-Across all six questions above, the model answers consistently:
+A **process** is a program that is currently running.
 
-1. **Pull specific details directly from the scenario** (never generic textbook answers)
-2. **Name the correct concept/term** clearly and early in the answer
-3. **Explain briefly *why*** that concept applies, in plain language
-4. **Justify the choice**, often by explicitly ruling out an alternative or noting a risk/trade-off
-5. Where relevant, end with a **short conclusion** tying it back to solving the business's problem
+**States a process goes through:**
+```
+New → Ready → Running → Terminated
+              ↕
+           Waiting
+```
 
-**Use this same structure on every question in your real exam** — even if you're unsure of the "perfect" textbook term, reasoning clearly from the scenario using this pattern will earn you strong application marks.
+- **New** – being created
+- **Ready** – waiting for CPU
+- **Running** – actually executing
+- **Waiting** – paused for I/O or some event
+- **Terminated** – finished
 
-### Suggested next step
-Try writing your own answers to a new scenario I give you (or one from your tutorials) *without* looking at the model answers first, then compare. Want me to generate a fresh set of scenarios for you to test yourself on?
+---
+
+### 7. Context Switching
+
+Context switching = the CPU **stops one process and starts another.**
+
+Before switching, the OS **saves everything** about the current process (so it can resume later exactly where it left off).
+
+**Downside:** switching takes time where no real work happens — this is called **overhead**.
+
+---
+
+### 8. PCB (Process Control Block)
+
+PCB is like an **ID card** the OS keeps for every process.
+
+**Contains:**
+- Process ID
+- Process state (running/waiting/ready)
+- Program counter
+- CPU registers
+- Memory info
+- I/O info
+
+Used whenever the OS needs to pause and resume a process.
+
+---
+
+### 9. Starvation
+
+Starvation = a process **never gets the CPU** because other processes keep jumping ahead of it.
+
+**Example:** In priority scheduling, a low-priority process may wait forever if high-priority processes keep arriving.
+
+---
+
+### 10. Aging
+
+Aging = slowly **increasing the priority** of a process the longer it waits.
+
+This fixes starvation — eventually the waiting process becomes "high priority" and gets its turn.
+
+**Simple way to remember:** the longer you wait in line, the more "important" you become, until you're served.
+
+---
+
+### 11. Multiprogramming
+
+Multiprogramming = **many programs stay in memory at once**, so the CPU always has something to do.
+
+**Goal:** keep the CPU busy — don't let it sit idle just because one program is waiting for I/O.
+
+---
+
+### 12. Multitasking
+
+Multitasking = the CPU **switches between programs so fast** that it feels like they're all running at the same time.
+
+---
+
+### 🔑 Diff: Multiprogramming vs Multitasking
+
+| Multiprogramming | Multitasking |
+|---|---|
+| Goal is to keep CPU busy | Goal is to give fast response to users |
+| Switches only when a process needs I/O | Switches after a fixed time slice, even if process could continue |
+| User may not feel multiple things happening | Feels like everything is happening at once |
+
+---
+
+### 13. Basic Architecture of Computer System / OS
+
+```
+        Users
+          │
+   Application Programs
+          │      (System Calls)
+    Operating System
+ (Process | Memory | File | Device Management)
+          │
+    Computer Hardware
+   (CPU | Memory | I/O | Storage)
+```
+
+- **Hardware** – the physical parts (CPU, RAM, disk).
+- **OS** – manages the hardware, sits right above it.
+- **Applications** – programs users actually open (browser, games, etc.)
+- **Users** – interact with applications, never touch hardware directly.
+
+---
+
+### 14. IPC (Inter-Process Communication)
+
+IPC = how **different processes talk to each other and share data**.
+
+**Why needed?**
+1. Sometimes processes need to **share information**.
+2. Splitting a big task into smaller processes is **faster**, but they need to talk to combine results.
+3. Makes the system **easier to manage** — small processes doing specific jobs.
+
+**Two main ways:** Shared Memory, Message Passing.
+
+---
+
+### 15. Race Condition
+
+A **race condition** happens when two processes access the same shared data at the same time, and the result depends on **who goes first** — leading to wrong or unpredictable answers.
+
+**Example:**
+Two threads both try to increase a shared variable `count = 5` at the same time:
+
+```c
+// Both threads read count = 5 before either writes back
+Thread A: temp = 5, temp = temp+1 = 6, count = 6
+Thread B: temp = 5, temp = temp+1 = 6, count = 6
+```
+
+Final result: `count = 6`, but it should have been `7` since two increments happened. One update got "lost" because of bad timing.
+
+**How to fix it (minimize race conditions):**
+1. **Locks/Mutex** – only one process can enter the shared section at a time.
+2. **Semaphores** – a signaling method to control access.
+3. **Atomic operations** – hardware ensures an operation completes fully, without interruption.
+
+**Fix using a lock (code):**
+```c
+lock.acquire();
+count = count + 1;   // safe now, no other thread can jump in
+lock.release();
+```
+
+---
+
+### 16. Busy Waiting
+
+Busy waiting = a process **keeps checking again and again** in a loop if it can proceed, instead of resting.
+
+```c
+while (lock == 1) {
+    // keep checking... wastes CPU time
+}
+```
+
+**Problem:** CPU is stuck doing nothing useful the whole time.
+
+---
+
+### 🔑 Diff: Busy Waiting vs No Busy Waiting
+
+| Busy Waiting | No Busy Waiting |
+|---|---|
+| Keeps checking again and again | Goes to sleep, wakes up only when ready |
+| Wastes CPU time | Frees CPU for other work |
+| Example: `while(lock==1){}` | Example: semaphore with sleep/wakeup |
+
+**Easy way to remember:** Busy waiting = repeatedly knocking on a door. No busy waiting = ringing the doorbell and walking away until someone answers.
+
+---
+
+### 17. Critical Section
+
+A **critical section** is the part of code where a process uses **shared data** — and only **one process should be allowed inside it at a time**.
+
+**3 Rules a good solution must follow:**
+1. **Mutual Exclusion** – only one process inside at a time.
+2. **Progress** – if no one's inside, someone waiting must be allowed in (no infinite blocking).
+3. **Bounded Waiting** – a process shouldn't wait forever; there's a limit on how many times others go first.
+
+**Basic structure (code):**
+```c
+acquire_lock();     // entry
+// critical section (shared data used here)
+release_lock();     // exit
+```
+
+---
+
+### 🔑 Diff: Process vs Program
+
+| Program | Process |
+|---|---|
+| A file stored on disk (like `.exe`) | A program that is currently running |
+| Doesn't use CPU/memory by itself | Uses CPU and memory while running |
+| Passive — just sits there | Active — doing something right now |
+| Stays the same until edited | Keeps changing state (running/waiting etc.) |
+
+**Easy way to remember:** A *recipe* in a cookbook = Program. Someone actually *cooking* using that recipe = Process.
+
+---
+
+## Quick Revision Table
+
+| Term | One-line meaning |
+|---|---|
+| OS | Software managing hardware for the user |
+| System Call | How a program asks OS for help |
+| Process | A running program |
+| PCB | ID card the OS keeps for a process |
+| Context Switch | CPU switching from one process to another |
+| Starvation | A process never getting its turn |
+| Aging | Raising priority over time to fix starvation |
+| Multiprogramming | Many programs in memory to keep CPU busy |
+| Multitasking | Fast switching to feel like everything runs together |
+| IPC | Processes talking/sharing data |
+| Race Condition | Wrong result due to bad timing on shared data |
+| Busy Waiting | Repeatedly checking in a loop, wasting CPU |
+| Critical Section | Code part needing exclusive access to shared data |
+
+---
+
+*Tip: for every definition question, write it as — (1) one-line meaning, (2) a real example. That covers full marks in most short-answer OS questions.*
